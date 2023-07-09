@@ -1,6 +1,6 @@
-$(function () {
+$(document).ready(function () {
   // Function to save the user input in local storage
-  $(".saveBtn").on("click", function () {
+  $(document).on("click", ".saveBtn", function () {
     var description = $(this).siblings(".description").val().trim();
     var timeBlockId = $(this).parent().attr("id");
     localStorage.setItem(timeBlockId, description);
@@ -14,14 +14,11 @@ $(function () {
       var hour = parseInt(timeBlockId.split("-")[1]);
 
       if (hour < currentHour) {
-        $(this).addClass("past");
-        $(this).removeClass("present future");
+        $(this).addClass("past").removeClass("present future");
       } else if (hour === currentHour) {
-        $(this).addClass("present");
-        $(this).removeClass("past future");
+        $(this).addClass("present").removeClass("past future");
       } else {
-        $(this).addClass("future");
-        $(this).removeClass("past present");
+        $(this).addClass("future").removeClass("past present");
       }
     });
   }
